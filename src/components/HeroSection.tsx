@@ -105,7 +105,7 @@ export default function HeroSection() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: scrolled ? "12px 5%" : "16px 5%",
+          padding: scrolled ? "10px 5%" : "14px 5%",
           transition: "all 0.35s ease",
           background: scrolled ? "rgba(11,19,43,0.92)" : "transparent",
           backdropFilter: scrolled ? "blur(12px)" : "none",
@@ -117,20 +117,20 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ display: "flex", alignItems: "center", gap: 12 }}
+          style={{ display: "flex", alignItems: "center", gap: 8 }}
         >
           <Image
             src="/images/logo.png"
             alt="Supekar Electronics"
-            height={50}
-            width={150}
+            height={40}
+            width={120}
             objectFit="contain"
           />
-          <strong style={{ fontSize: 20 }}>Supekar Electronics</strong>
+          <strong style={{ fontSize: "clamp(14px, 2.5vw, 20px)", whiteSpace: "nowrap" }}>Supekar Electronics</strong>
         </motion.div>
 
         {/* Desktop Links */}
-        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+        <div style={{ display: "flex", gap: "clamp(12px, 3vw, 20px)", alignItems: "center" }}>
           {["about", "products", "contact"].map((id, idx) => (
             <motion.button
               key={id}
@@ -140,6 +140,8 @@ export default function HeroSection() {
                 ...linkStyle,
                 position: "relative",
                 overflow: "hidden",
+                fontSize: "clamp(12px, 2vw, 16px)",
+                padding: "8px 12px",
               }}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -233,20 +235,20 @@ export default function HeroSection() {
       </nav>
 
       {/* HERO CONTENT */}
-      <section style={{ minHeight: "80vh", padding: "0 5%" }}>
-        <div className="hero-wrapper" style={{ display: "flex", alignItems: "center", gap: 40 }}>
+      <section style={{ minHeight: "80vh", padding: "80px 5% 40px 5%" }}>
+        <div className="hero-wrapper" style={{ display: "flex", alignItems: "center", gap: "clamp(20px, 5vw, 40px)", flexDirection: "column" }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="hero-content"
-            style={{ maxWidth: 600 }}
+            style={{ maxWidth: "100%", width: "100%" }}
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              style={{ fontSize: "3rem", marginBottom: 16, lineHeight: 1.2 }}
+              style={{ fontSize: "clamp(1.5rem, 6vw, 3rem)", marginBottom: "clamp(12px, 3vw, 24px)", lineHeight: 1.3 }}
             >
               Smart, Repairable & Affordable Electronics — Made for India
             </motion.h1>
@@ -254,7 +256,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              style={{ fontSize: "1.125rem", marginBottom: 24 }}
+              style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.125rem)", marginBottom: "clamp(16px, 4vw, 24px)", lineHeight: 1.6 }}
             >
               We design and manufacture reliable automation and IoT products
               focused on local serviceability and cost effectiveness.
@@ -263,12 +265,12 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              style={{ display: "flex", gap: 16 }}
+              style={{ display: "flex", gap: "clamp(12px, 3vw, 16px)", justifyContent: "flex-start" }}
             >
               <motion.button
                 onClick={() => scrollTo("products")}
                 whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(0,208,132,0.35)" }}
-                style={primaryStyle}
+                style={{ ...primaryStyle, padding: "12px 24px", fontSize: "clamp(14px, 2.5vw, 16px)" }}
               >
                 View Products
               </motion.button>
@@ -278,14 +280,14 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            style={{ marginLeft: "auto" }}
+            style={{ marginLeft: "auto", marginRight: "auto", marginTop: "20px", width: "100%", display: "flex", justifyContent: "center" }}
           >
             <Image
               src="/images/hero.png"
               alt="Product"
               width={500}
               height={500}
-              style={{ maxWidth: 500 }}
+              style={{ maxWidth: "100%", height: "auto", maxHeight: "400px" }}
             />
           </motion.div>
         </div>
