@@ -50,13 +50,14 @@ export default function ProductSection() {
       <div
         style={{
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: "120px", // 👈 Increased spacing
+          gap: "40px",
           width: "100%",
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: "0 8%",
+          padding: "0 5%",
         }}
       >
         {/* LEFT IMAGE */}

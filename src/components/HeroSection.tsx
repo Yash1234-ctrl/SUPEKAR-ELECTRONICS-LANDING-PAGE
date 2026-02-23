@@ -92,7 +92,7 @@ export default function HeroSection() {
       style={{
         background: "linear-gradient(90deg,#0b132b,#1f4068)",
         color: "#fff",
-        paddingTop: "140px",
+        paddingTop: "80px",
       }}
     >
       <nav
@@ -105,7 +105,7 @@ export default function HeroSection() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: scrolled ? "20px 10%" : "32px 10%",
+          padding: scrolled ? "12px 5%" : "16px 5%",
           transition: "all 0.35s ease",
           background: scrolled ? "rgba(11,19,43,0.92)" : "transparent",
           backdropFilter: scrolled ? "blur(12px)" : "none",
@@ -233,7 +233,7 @@ export default function HeroSection() {
       </nav>
 
       {/* HERO CONTENT */}
-      <section style={{ minHeight: "80vh", padding: "0 10%" }}>
+      <section style={{ minHeight: "80vh", padding: "0 5%" }}>
         <div className="hero-wrapper" style={{ display: "flex", alignItems: "center", gap: 40 }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}

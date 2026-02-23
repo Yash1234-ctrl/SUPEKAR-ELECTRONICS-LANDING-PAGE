@@ -105,7 +105,7 @@ export default function ContactSection() {
       style={{
         position: "relative",
         minHeight: "100vh",
-        padding: "120px 6%",
+        padding: "80px 5%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

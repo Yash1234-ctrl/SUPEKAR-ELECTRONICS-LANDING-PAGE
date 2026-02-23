@@ -11,7 +11,7 @@ export default function FounderSection() {
       className="bg-combined bg-pulse"
       style={{
         textAlign: "center",
-        padding: "140px 6%",
+        padding: "90px 5%",
         position: "relative",
         overflow: "hidden",
       }}
