@@ -40,7 +40,7 @@ export default function FounderSection() {
             height: 220,
             borderRadius: "50%",
             overflow: "hidden",
-            marginBottom: "30px",
+            margin: "0 auto 30px",
             boxShadow: "0 25px 60px rgba(0,0,0,0.6)",
             border: "3px solid rgba(0,255,136,0.7)",
           }}
