@@ -1,6 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { FaEnvelope, FaPhone } from "react-icons/fa";
 
 export default function FounderSection() {
   const shouldReduce = useReducedMotion();
@@ -26,9 +27,7 @@ export default function FounderSection() {
         <motion.div
           whileHover={{ scale: 1.05 }}
           animate={
-            shouldReduce
-              ? undefined
-              : { y: [0, -10, 0] }
+            shouldReduce ? undefined : { y: [0, -10, 0] }
           }
           transition={
             shouldReduce
@@ -50,7 +49,7 @@ export default function FounderSection() {
             alt="Founder"
             width={220}
             height={220}
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
           />
         </motion.div>
 
@@ -66,7 +65,7 @@ export default function FounderSection() {
             marginBottom: "10px",
           }}
         >
-          Mr.Prathamesh Supekar
+          Mr. Prathamesh Supekar
         </motion.h2>
 
         {/* Accent Line */}
@@ -90,18 +89,70 @@ export default function FounderSection() {
           style={{
             fontSize: "20px",
             color: "#ccc",
-            marginBottom: "30px",
+            marginBottom: "20px",
             fontWeight: 400,
           }}
         >
           Founder & CEO
         </motion.h3>
 
+        {/* Email */}
+        <motion.a
+          href="mailto:prathameshsupekar2804@gmail.com"
+          initial={shouldReduce ? {} : { opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          whileHover={{ scale: 1.05 }}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "10px 20px",
+            background: "rgba(0,255,136,0.1)",
+            border: "1px solid rgba(0,255,136,0.5)",
+            borderRadius: "30px",
+            textDecoration: "none",
+            color: "#00ff88",
+            fontSize: "16px",
+            marginBottom: "15px",
+          }}
+        >
+          <FaEnvelope />
+          prathameshsupekar2804@gmail.com
+        </motion.a>
+
+        <br />
+
+        {/* Phone */}
+        <motion.a
+          href="tel:8459672618"
+          initial={shouldReduce ? {} : { opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          whileHover={{ scale: 1.05 }}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "10px 20px",
+            background: "rgba(0,255,136,0.1)",
+            border: "1px solid rgba(0,255,136,0.5)",
+            borderRadius: "30px",
+            textDecoration: "none",
+            color: "#00ff88",
+            fontSize: "16px",
+            marginBottom: "30px",
+          }}
+        >
+          <FaPhone />
+          +91 84596 72618
+        </motion.a>
+
         {/* Vision Statement */}
         <motion.p
           initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.9 }}
+          transition={{ delay: 0.7, duration: 0.9 }}
           style={{
             maxWidth: "750px",
             margin: "0 auto",
