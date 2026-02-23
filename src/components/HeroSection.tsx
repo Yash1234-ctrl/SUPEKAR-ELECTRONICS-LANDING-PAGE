@@ -129,9 +129,9 @@ export default function HeroSection() {
           <strong style={{ fontSize: "clamp(14px, 2.5vw, 20px)", whiteSpace: "nowrap" }}>Supekar Electronics</strong>
         </motion.div>
 
-        {/* Desktop Links */}
-        <div style={{ display: "flex", gap: "clamp(12px, 3vw, 20px)", alignItems: "center" }}>
-          {["about", "products", "contact"].map((id, idx) => (
+        {/* Desktop Links - Hidden on mobile */}
+        <div className="desktop-nav" style={{ display: "flex", gap: "clamp(12px, 3vw, 20px)", alignItems: "center" }}>
+          {["about", "products", "contact"].map((id) => (
             <motion.button
               key={id}
               onClick={() => scrollTo(id)}
@@ -163,7 +163,7 @@ export default function HeroSection() {
             </motion.button>
           ))}
 
-          {/* AUTH SECTION */}
+          {/* AUTH SECTION - Desktop */}
           {!user ? (
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0px 6px 20px rgba(0,208,132,0.35)" }}
@@ -174,7 +174,7 @@ export default function HeroSection() {
             </motion.button>
           ) : (
             <div ref={profileRef} style={{ position: "relative" }}>
-              {/* Profile Picture */}
+              {/* Profile Picture Desktop */}
               <motion.img
                 whileHover={{
                   scale: 1.12,
@@ -193,7 +193,7 @@ export default function HeroSection() {
                 }}
               />
 
-              {/* Animated Logout Panel */}
+              {/* Logout Panel Desktop */}
               <AnimatePresence>
                 {showProfileMenu && (
                   <motion.div
@@ -232,7 +232,153 @@ export default function HeroSection() {
             </div>
           )}
         </div>
+
+        {/* Mobile Hamburger Menu Button */}
+        <motion.button
+          className="mobile-menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "#fff",
+            fontSize: "1.5rem",
+            cursor: "pointer",
+            padding: "8px 12px",
+            zIndex: 1001,
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </motion.button>
       </nav>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="mobile-dropdown"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: "fixed",
+              top: 64,
+              left: 0,
+              right: 0,
+              background: "rgba(11,19,43,0.98)",
+              backdropFilter: "blur(12px)",
+              flexDirection: "column",
+              gap: 0,
+              padding: "12px 0",
+              zIndex: 999,
+              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            }}
+          >
+            {/* Mobile Navigation Links */}
+            {["about", "products", "contact"].map((id) => (
+              <motion.button
+                key={id}
+                onClick={() => scrollTo(id)}
+                whileHover={{ backgroundColor: "rgba(0,208,132,0.1)" }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  padding: "14px 20px",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  transition: "background 0.2s ease",
+                  borderLeft: "3px solid transparent",
+                }}
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </motion.button>
+            ))}
+
+            <motion.div
+              style={{
+                height: "1px",
+                background: "rgba(0,208,132,0.2)",
+                margin: "8px 0",
+              }}
+            />
+
+            {/* Mobile Auth Section */}
+            {!user ? (
+              <motion.button
+                onClick={handleGoogleLogin}
+                whileHover={{ backgroundColor: "rgba(0,208,132,0.2)" }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#00d084",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  padding: "14px 20px",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  transition: "background 0.2s ease",
+                }}
+              >
+                📧 Gmail Login
+              </motion.button>
+            ) : (
+              <div style={{ padding: "12px 20px" }}>
+                <motion.div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    marginBottom: 12,
+                  }}
+                >
+                  <img
+                    src={user.photoURL}
+                    alt="profile"
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      border: "2px solid #00d084",
+                    }}
+                  />
+                  <div style={{ flexGrow: 1 }}>
+                    <div style={{ fontSize: "0.9rem", color: "#ccc" }}>Logged in as</div>
+                    <div style={{ fontSize: "0.85rem", fontWeight: 600 }}>{user.displayName || "User"}</div>
+                  </div>
+                </motion.div>
+                <motion.button
+                  onClick={() => {
+                    handleLogout();
+                    setMenuOpen(false);
+                  }}
+                  whileHover={{ backgroundColor: "rgba(255,107,107,0.2)" }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    background: "transparent",
+                    border: "1px solid #ff6b6b",
+                    color: "#ff6b6b",
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    padding: "10px 16px",
+                    borderRadius: 6,
+                    cursor: "pointer",
+                    width: "100%",
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  Logout
+                </motion.button>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* HERO CONTENT */}
       <section style={{ minHeight: "80vh", padding: "80px 5% 40px 5%" }}>

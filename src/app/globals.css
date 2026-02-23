@@ -36,10 +36,23 @@ button:hover {
 
 /* Header / nav styles */
 header nav img { display: block; }
-.desktop-links { display: flex; align-items: center; gap: 18px; }
-.mobile-toggle { display: flex; background: transparent; border: none; color: inherit; font-size: 1.25rem; }
-.mobile-menu { display: none; position: absolute; top: 72px; right: 5%; background: rgba(255,255,255,0.04); border-radius: 8px; padding: 12px; flex-direction: column; gap: 10px; z-index: 100; }
-.mobile-menu.open { display: flex; }
+.desktop-nav { display: flex; align-items: center; gap: 18px; }
+.mobile-menu-btn { display: none; }
+.mobile-dropdown { display: none !important; }
+
+/* Mobile nav responsive */
+@media (max-width: 640px) {
+  .desktop-nav { display: none !important; }
+  .mobile-menu-btn { display: block !important; }
+  .mobile-dropdown { display: flex !important; }
+}
+
+/* Tablet & Desktop */
+@media (min-width: 641px) {
+  .desktop-nav { display: flex !important; }
+  .mobile-menu-btn { display: none !important; }
+  .mobile-dropdown { display: none !important; }
+}
 
 /* Hero content helpers */
 .hero-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
