@@ -45,7 +45,7 @@ export default function FounderSection() {
           }}
         >
           <Image
-            src="/images/founder.png"
+            src="/images/Founder.png"
             alt="Founder"
             width={220}
             height={220}
